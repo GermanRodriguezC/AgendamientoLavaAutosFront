@@ -52,8 +52,8 @@ pipeline {
 
     stage('Static Code Analysis') {
       steps{
-        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:agendamientolavaautos-german.rodriguez',
-                            sonarName:'"CeibaADN-AgendamientoLavaAutosFront(german.rodriguez)"',
+        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba:agendamientolavaautos.front.german.rodriguez',
+                            sonarName:'"CeibaADN-AgendamientoLavaAutos-Front(german.rodriguez)"',
                             sonarPathProperties:'./sonar-project.properties')
       }
     }

@@ -6,7 +6,7 @@ import { ActualizarCitaComponent } from './actualizar-cita.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CitaService } from '@cita/shared/service/cita.service';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { HttpService } from '@core/services/http.service';
 
 describe('ActualizarCitaComponent', () => {
@@ -31,9 +31,6 @@ describe('ActualizarCitaComponent', () => {
     fixture = TestBed.createComponent(ActualizarCitaComponent);
     component = fixture.componentInstance;
     citaService = TestBed.inject(CitaService);
-    spyOn(citaService, 'actualizar').and.returnValue(
-      of(true)
-    );
     fixture.detectChanges();
   });
 
@@ -46,6 +43,7 @@ describe('ActualizarCitaComponent', () => {
   });
 
   it('Actualizando cita', () => {
+    spyOn(citaService, 'actualizar').and.returnValue(of(true));
     expect(component.citaForm.valid).toBeFalsy();
     component.citaForm.controls.id.setValue('1');
     component.citaForm.controls.hora.setValue('15:00');
@@ -54,7 +52,7 @@ describe('ActualizarCitaComponent', () => {
     expect(component.citaForm.valid).toBeTrue();
 
     component.onSubmit();
-    
+    expect(citaService.actualizar).toHaveBeenCalled();
   });
 
   it('Generando un error en Actualización de cita', () => {
@@ -65,8 +63,9 @@ describe('ActualizarCitaComponent', () => {
     component.citaForm.controls.fecha.setValue('02/02/2022');
     expect(component.citaForm.valid).toBeFalsy();
 
+    spyOn(citaService,'actualizar').and.returnValue(throwError('error'));
     component.onSubmit();
-    
+    expect(component.show).toBeFalsy();
   });
 
 });

@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CitaService } from '../../shared/service/cita.service';
 import { Cita } from '../../shared/model/cita';
 import { HttpService } from 'src/app/core/services/http.service';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 describe('ListarCitaComponent', () => {
   let component: ListarCitaComponent;
@@ -34,16 +34,36 @@ describe('ListarCitaComponent', () => {
     component = fixture.componentInstance;
     citaService = TestBed.inject(CitaService);
     datepipe = TestBed.inject(DatePipe);
-    spyOn(citaService, 'consultar').and.returnValue(
-      of(listaCitas)
-    );
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
     expect(datepipe.transform('2022-02-02','dd/MM/yyyy')).toBe('02/02/2022');
+  });
+
+  it('formulario es invalido cuando esta vacio', () => {
+    expect(component.citaForm.valid).toBeFalsy();
+  });
+
+  it('Consultando citas', () => {
+    spyOn(citaService, 'consultar').and.returnValue(of(listaCitas));
+    expect(component.citaForm.valid).toBeFalsy();
+    component.citaForm.controls.fecha.setValue('02/02/2022');
+    expect(component.citaForm.valid).toBeTrue();
+
+    component.onSubmit(component.citaForm);
     
-});
+  });
+
+  it('Generando un error en Consulta de citas', () => {
+    expect(component.citaForm.valid).toBeFalsy();
+    component.citaForm.controls.fecha.setValue('');
+    expect(component.citaForm.valid).toBeFalsy();
+
+    spyOn(citaService,'consultar').and.returnValue(throwError('error'));
+    component.onSubmit(component.citaForm);
+    expect(component.show).toBeFalsy();
+  });
 
 });

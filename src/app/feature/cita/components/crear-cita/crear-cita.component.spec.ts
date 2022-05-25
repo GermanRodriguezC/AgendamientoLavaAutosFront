@@ -66,6 +66,6 @@ describe('CrearCitaComponent', () => {
     spyOn(citaService,'guardar').and.returnValue(throwError('error'));
     component.onSubmit();
     expect(component.show).toBeFalsy();
-    
   });
+  
 });

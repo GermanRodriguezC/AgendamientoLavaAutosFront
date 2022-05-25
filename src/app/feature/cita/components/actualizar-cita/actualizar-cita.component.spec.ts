@@ -6,8 +6,8 @@ import { ActualizarCitaComponent } from './actualizar-cita.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CitaService } from '@cita/shared/service/cita.service';
-import { of, throwError } from 'rxjs';
 import { HttpService } from '@core/services/http.service';
+import { of } from 'rxjs';
 
 describe('ActualizarCitaComponent', () => {
   let component: ActualizarCitaComponent;
@@ -56,10 +56,9 @@ describe('ActualizarCitaComponent', () => {
     component.citaForm.controls.id.setValue('1');
     component.citaForm.controls.hora.setValue('15:00');
     component.citaForm.controls.placa.setValue('595');
-    component.citaForm.controls.fecha.setValue('02/02/2022');
+    component.citaForm.controls.fecha.setValue('02-02-2022');
     expect(component.citaForm.valid).toBeFalsy();
 
-    spyOn(citaService,'actualizar').and.returnValue(throwError('error'));
     component.onSubmit();
     expect(component.show).toBeFalsy();
   });

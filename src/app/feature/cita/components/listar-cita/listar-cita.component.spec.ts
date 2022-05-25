@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CitaService } from '../../shared/service/cita.service';
 import { Cita } from '../../shared/model/cita';
 import { HttpService } from 'src/app/core/services/http.service';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 
 describe('ListarCitaComponent', () => {
   let component: ListarCitaComponent;
@@ -71,7 +71,6 @@ describe('ListarCitaComponent', () => {
     component.citaForm.controls.fecha.setValue('');
     expect(component.citaForm.valid).toBeFalsy();
 
-    spyOn(citaService,'consultar').and.returnValue(throwError('error'));
     component.onSubmit(component.citaForm);
     expect(component.show).toBeFalsy();
   });

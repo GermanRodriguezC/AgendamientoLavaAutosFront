@@ -49,7 +49,7 @@ describe('ActualizarCitaComponent', () => {
     component.citaForm.controls.hora.setValue('15:00');
     component.citaForm.controls.placa.setValue('BVB595');
     component.citaForm.controls.fecha.setValue('02/02/2022');
-    expect(component.citaForm.valid).toBeTrue();
+    expect(component.citaForm.valid).toBeTruthy();
 
     component.onSubmit();
     

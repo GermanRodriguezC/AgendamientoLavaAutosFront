@@ -1,5 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { CrearCitaComponent } from './crear-cita.component';
 import { CommonModule } from '@angular/common';
@@ -33,9 +33,6 @@ describe('CrearCitaComponent', () => {
     fixture = TestBed.createComponent(CrearCitaComponent);
     component = fixture.componentInstance;
     citaService = TestBed.inject(CitaService);
-    spyOn(citaService, 'guardar').and.returnValue(
-      of(true)
-    );
     fixture.detectChanges();
   });
 
@@ -48,6 +45,7 @@ describe('CrearCitaComponent', () => {
   });
 
   it('Registrando cita', () => {
+    spyOn(citaService, 'guardar').and.returnValue(of(true));
     expect(component.citaForm.valid).toBeFalsy();
     component.citaForm.controls.hora.setValue('15:00');
     component.citaForm.controls.placa.setValue('BVB595');
@@ -65,7 +63,9 @@ describe('CrearCitaComponent', () => {
     component.citaForm.controls.fecha.setValue('02/02/2022');
     expect(component.citaForm.valid).toBeFalsy();
 
+    spyOn(citaService,'guardar').and.returnValue(throwError('error'));
     component.onSubmit();
+    expect(component.show).toBeFalsy();
     
   });
 });

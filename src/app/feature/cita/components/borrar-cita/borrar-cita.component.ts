@@ -21,7 +21,7 @@ export class BorrarCitaComponent implements OnInit {
 
   private construirFormularioCita() {
     this.citaForm = new FormGroup({
-      id: new FormControl('', [Validators.pattern("\\d*")])
+      id: new FormControl('', [Validators.pattern('\\d*')])
     });
   }
   
@@ -29,11 +29,11 @@ export class BorrarCitaComponent implements OnInit {
     this.citaService.eliminar(form.value.id).subscribe(
       response => {
         this.show = true;
-        this.id = response["valor"];
-        this.mensaje = "Se eliminó satisfactoriamente la cita con el id: " + this.id;
+        this.id = response['valor'];
+        this.mensaje = 'Se eliminó satisfactoriamente la cita con el id: ' + this.id;
       },
       err => { 
-        this.mensaje = err["error"].mensaje;
+        this.mensaje = err['error'].mensaje;
         this.show = false;
      }
     );

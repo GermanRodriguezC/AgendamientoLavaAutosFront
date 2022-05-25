@@ -55,8 +55,6 @@ describe('CrearCitaComponent', () => {
     expect(component.citaForm.valid).toBeTruthy();
 
     component.onSubmit();
-
-    // Aca validamos el resultado esperado al enviar la petición
-    // TODO adicionar expect
+    
   });
 });

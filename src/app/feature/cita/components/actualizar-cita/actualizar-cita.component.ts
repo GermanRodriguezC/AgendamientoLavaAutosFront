@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 const LONGITUD_MINIMA_PERMITIDA_FECHA = 10;
 const LONGITUD_MAXIMA_PERMITIDA_FECHA = 10;
+const FORMATO = '^[A-Z0-9]{5,6}$';
 
 @Component({
   selector: 'app-actualizar-cita',
@@ -25,7 +26,7 @@ export class ActualizarCitaComponent implements OnInit {
   private construirFormularioCita() {
     this.citaForm = new FormGroup({
       id: new FormControl('', [Validators.required]),
-      placa: new FormControl('', [Validators.required]),
+      placa: new FormControl('', [Validators.required, Validators.pattern(FORMATO)]),
       fecha: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_FECHA),
       Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_FECHA)]),
       hora: new FormControl('', [Validators.required])

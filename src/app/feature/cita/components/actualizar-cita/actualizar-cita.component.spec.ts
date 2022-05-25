@@ -57,4 +57,16 @@ describe('ActualizarCitaComponent', () => {
     
   });
 
+  it('Generando un error en Actualización de cita', () => {
+    expect(component.citaForm.valid).toBeFalsy();
+    component.citaForm.controls.id.setValue('1');
+    component.citaForm.controls.hora.setValue('15:00');
+    component.citaForm.controls.placa.setValue('595');
+    component.citaForm.controls.fecha.setValue('02/02/2022');
+    expect(component.citaForm.valid).toBeFalsy();
+
+    component.onSubmit();
+    
+  });
+
 });

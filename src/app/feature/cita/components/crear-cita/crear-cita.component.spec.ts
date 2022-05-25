@@ -36,10 +36,6 @@ describe('CrearCitaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('formulario es invalido cuando esta vacio', () => {
     expect(component.citaForm.valid).toBeFalsy();
   });

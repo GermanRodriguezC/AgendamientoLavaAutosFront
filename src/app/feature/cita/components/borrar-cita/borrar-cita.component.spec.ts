@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CitaService } from '@cita/shared/service/cita.service';
 import { HttpService } from 'src/app/core/services/http.service';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 
 describe('BorrarCitaComponent', () => {
   let component: BorrarCitaComponent;
@@ -55,7 +55,6 @@ describe('BorrarCitaComponent', () => {
     expect(component.citaForm.valid).toBeFalsy();
     component.citaForm.controls.id.setValue('');
     expect(component.citaForm.valid).toBeFalsy();
-    spyOn(citaService, 'eliminar').and.returnValue(throwError('error'));
     component.onSubmit(component.citaForm);
     expect(component.show).toBeFalsy();
   });

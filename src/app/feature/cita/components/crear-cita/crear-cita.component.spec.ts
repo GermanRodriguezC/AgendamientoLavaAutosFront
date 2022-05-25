@@ -37,35 +37,34 @@ describe('CrearCitaComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTrue();
+    expect(component).toBeTruthy();
   });
 
   it('formulario es invalido cuando esta vacio', () => {
-    expect(component.citaForm.valid).toBeFalse();
+    expect(component.citaForm.valid).toBeFalsy();
   });
 
   it('Registrando cita', () => {
     spyOn(citaService, 'guardar').and.returnValue(of(true));
-    expect(component.citaForm.valid).toBeFalse();
+    expect(component.citaForm.valid).toBeFalsy();
     component.citaForm.controls.hora.setValue('15:00');
     component.citaForm.controls.placa.setValue('BVB595');
     component.citaForm.controls.fecha.setValue('02/02/2022');
-    expect(component.citaForm.valid).toBeTrue();
+    expect(component.citaForm.valid).toBeTruthy();
 
     component.onSubmit();
 
   });
 
   it('Generando un error en Creación de cita', () => {
-    expect(component.citaForm.valid).toBeFalse();
+    expect(component.citaForm.valid).toBeFalsy();
     component.citaForm.controls.hora.setValue('15:00');
     component.citaForm.controls.placa.setValue('595');
     component.citaForm.controls.fecha.setValue('02/02/2022');
-    expect(component.citaForm.valid).toBeFalse();
+    expect(component.citaForm.valid).toBeFalsy();
 
     spyOn(citaService,'guardar').and.returnValue(throwError('error'));
     component.onSubmit();
-    expect(component.show).toBeFalse();
+    expect(component.show).toBeFalsy();
   });
-  
 });

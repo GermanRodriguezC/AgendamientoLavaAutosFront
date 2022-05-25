@@ -21,7 +21,7 @@ export class BorrarCitaComponent implements OnInit {
 
   private construirFormularioCita() {
     this.citaForm = new FormGroup({
-      id: new FormControl('', [Validators.pattern('\\d*')])
+      id: new FormControl('', [Validators.required, Validators.pattern('\\d*')])
     });
   }
   

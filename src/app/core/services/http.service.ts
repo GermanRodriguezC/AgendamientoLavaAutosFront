@@ -51,7 +51,6 @@ export class HttpService implements OnInit {
 
   public doGet<T>(serviceUrl: string, opts?: Options) {
     const ropts = this.createOptions(opts);
-    console.log
     return this.http.get<T>(serviceUrl, ropts);
   }
 

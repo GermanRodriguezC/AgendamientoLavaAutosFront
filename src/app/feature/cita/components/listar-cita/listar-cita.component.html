@@ -14,9 +14,10 @@
    </div>
    <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
     <ng-template #content>
-      <p>Citas agendadas!</p>
       <div>
+        <br>
         <table class="tabla">
+          <caption><strong>Citas agendadas!</strong></caption>
           <thead>
             <tr>
                 <th>ID</th>

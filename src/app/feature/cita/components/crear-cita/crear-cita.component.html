@@ -19,13 +19,12 @@
           <label class="form__label"></label>
           <span class="form__line"></span>
         </div>
-        <button class="button" type="submit" [disabled]="!citaForm.valid">Guardar</button>
+        <button class="button" id="button" (click)="onSubmit()" [disabled]="!citaForm.valid">Guardar</button>
         <div *ngIf="show; then content" class="alert alert-danger animated fadeIn"></div>
         <ng-template #content>
             <h1>{{mensaje}}</h1>
         </ng-template>
       </div>
-
     </form>
 </body>
 

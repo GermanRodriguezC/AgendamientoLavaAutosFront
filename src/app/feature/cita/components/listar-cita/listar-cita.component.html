@@ -10,7 +10,7 @@
       <label class="form__label">Fecha:</label>
       <span class="form__line"></span>
     </div>
-     <button class="button" type="submit" [disabled]="!citaForm.valid">Consultar</button>
+     <button class="button" id="button" (click)="onSubmit(citaForm)" [disabled]="!citaForm.valid">Consultar</button>
    </div>
    <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
     <ng-template #content>
@@ -28,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of listaCitas | async">
+            <tr *ngFor="let item of listaCitas | async" class="items" id="items">
                 <td> {{item.id }}</td>
                 <td> {{item.placa}} </td>
                 <td> {{item.fecha}} </td>
@@ -40,7 +40,7 @@
      </div>
     </ng-template>
     <ng-template #other_content>
-      <p>{{mensaje}}</p>
+      <h1>{{mensaje}}</h1>
     </ng-template>
    
  </form>

@@ -1,35 +1,36 @@
-import { NavbarPage } from '../page/navbar/navbar.po';
 import { AppPage } from '../app.po';
 import { CitaPage } from '../page/cita/cita.po';
 
 describe('workspace-project Cita', () => {
     let page: AppPage;
-    let navBar: NavbarPage;
     let cita: CitaPage;
 
     beforeEach(() => {
         page = new AppPage();
-        navBar = new NavbarPage();
         cita = new CitaPage();
     });
 
-    it('Deberia crear cita', () => {
-        const ID_PRODUCTO = '001';
-        const DESCRIPCION_PRODUCTO = 'Cita de pruebas';
+    it('Deberia crear cita', async () => {
+        page.navigateToCita('/crear');
+        const HORA = '12:00';
+        const PLACA = 'ABC123';
+        const FECHA = '02/02/2022';
 
-        page.navigateTo();
-        navBar.clickBotonCitas();
-        cita.clickBotonCrearCitas();
-        cita.ingresarId(ID_PRODUCTO);
-        cita.ingresarDescripcion(DESCRIPCION_PRODUCTO);
-
+        await cita.ingresarPlaca(PLACA);
+        await cita.ingresarFecha(FECHA);
+        await cita.ingresarHora(HORA);
+        await cita.clickBotonGuardarCita();
+        expect(cita.getMensajeCrear('app-crear-cita h1')).toContain('La cita se creó satisfactoriamente con el Id:');
     });
 
-    it('Deberia listar citas', () => {
-        page.navigateTo();
-        navBar.clickBotonCitas();
-        cita.clickBotonListarCitas();
+    it('Deberia listar citas', async () => {
+        page.navigateToCita('/listar');
+        const FECHA = '04/02/2022';
 
-        expect(4).toBe(cita.contarCitas());
+        await cita.ingresarFechaListar(FECHA);
+        await cita.clickBotonListarCitas();
+        expect(0).toBe(await cita.contarCitas());
+        expect(cita.getMensajeCrear('app-listar-cita h1')).toEqual('No se encontró ninguna cita para esa fecha.');
     });
+
 });

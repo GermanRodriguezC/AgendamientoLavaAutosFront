@@ -43,10 +43,17 @@ pipeline {
       }
     }
 
-	stage('Test Unit') {
+    stage('Test Unit') {
       steps{
-		echo "------------>Test Unit<------------"
-		sh 'npm run test -- --watch=false --browsers ChromeHeadless'
+      echo "------------>Test Unit<------------"
+      sh 'npm run test -- --watch=false --browsers ChromeHeadless'
+        }
+    }
+
+    stage('Test end-to-end') {
+      steps{
+        echo "------------>Testing Protractor<------------"
+        sh 'npm run e2e'
       }
     }
 

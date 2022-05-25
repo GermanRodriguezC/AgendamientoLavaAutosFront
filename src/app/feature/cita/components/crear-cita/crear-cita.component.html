@@ -1,0 +1,34 @@
+<body>
+     <form class="form" [formGroup]="citaForm" (ngSubmit)="onSubmit()" id="formCita">
+      <h2 class="form__title">Crear Cita</h2>
+      <p class="form__paragraph">Por favor diligenciar el formulario que está acontinuación</p>
+      
+      <div class="form__container">
+        <div class="form__group">
+          <input validar type="text" id="placa" name="placa" placeholder="Placa:" class="form-control" formControlName="placa">
+          <label class="form__label"></label>
+          <span class="form__line"></span>
+        </div>
+        <div class="form__group">
+          <input validar type="text" id="fecha" name="fecha" placeholder="Fecha" class="form-control" formControlName="fecha">
+          <label class="form__label"></label>
+          <span class="form__line"></span>
+        </div>
+        <div class="form__group">
+          <input validar type="text" id="hora" name="hora" placeholder="hora" class="form-control" formControlName="hora">
+          <label class="form__label"></label>
+          <span class="form__line"></span>
+        </div>
+        <button class="button" type="submit" [disabled]="!citaForm.valid">Guardar</button>
+        <div *ngIf="show; then content" class="alert alert-danger animated fadeIn"></div>
+        <ng-template #content>
+            <h1>{{mensaje}}</h1>
+        </ng-template>
+      </div>
+
+    </form>
+</body>
+
+
+
+

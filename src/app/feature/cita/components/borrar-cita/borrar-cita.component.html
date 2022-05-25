@@ -1,0 +1,22 @@
+<body>
+  <form class="form" [formGroup]="citaForm" (ngSubmit)="onSubmit(citaForm)" id="formCita">
+   <h2 class="form__title">Borrar Cita</h2>
+   <p class="form__paragraph">Por favor diligenciar el id de la cita que quiere eliminar</p>
+   <div class="form__container">
+    <div class="form__group">
+        <label class="form__label">id:</label>
+        <span class="form__line"></span>
+        <input validar type="text" id="id" name="id" placeholder=" " class="form-control" formControlName="id">
+    </div>
+     <button class="button" type="submit" [disabled]="!citaForm.valid">Borrar</button>
+   </div>
+   <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
+        <ng-template #content>
+          <p class="form__paragraph">{{mensaje}}</p>
+        </ng-template>
+        <ng-template #other_content>
+          <p class="form__paragraph">{{mensaje}}</p>
+        </ng-template>
+        
+ </form>
+</body>

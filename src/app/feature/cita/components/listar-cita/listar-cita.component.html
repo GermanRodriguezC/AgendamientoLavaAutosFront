@@ -1,0 +1,47 @@
+<body>
+  <form class="form" [formGroup]="citaForm" (ngSubmit)="onSubmit(citaForm)" id="formCita">
+   <h2 class="form__title">Consultar Citas</h2>
+   <p class="form__paragraph">Seleccione la fecha a consultar</p>
+   <div class="form__container">
+    <div class="form__group">
+      <input  type="date" id="fecha" name="fecha" placeholder="Fecha cita"
+      value="18/05/2022"
+      min="01/01/0500" max="31/12/3000" class="form-control" formControlName="fecha">
+      <label class="form__label">Fecha:</label>
+      <span class="form__line"></span>
+    </div>
+     <button class="button" type="submit" [disabled]="!citaForm.valid">Consultar</button>
+   </div>
+   <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
+    <ng-template #content>
+      <p>Citas agendadas!</p>
+      <div>
+        <table class="tabla">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Placa</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listaCitas | async">
+                <td> {{item.id }}</td>
+                <td> {{item.placa}} </td>
+                <td> {{item.fecha}} </td>
+                <td> {{item.hora}}</td>
+                <td> {{item.valor}} </td>
+            </tr>
+          </tbody>
+        </table>
+     </div>
+    </ng-template>
+    <ng-template #other_content>
+      <p>{{mensaje}}</p>
+    </ng-template>
+   
+ </form>
+</body>
+

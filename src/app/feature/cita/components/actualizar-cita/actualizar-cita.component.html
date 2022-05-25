@@ -1,0 +1,56 @@
+<body>
+  <form class="form" [formGroup]="citaForm" (ngSubmit)="onSubmit()" id="formCita">
+   <h2 class="form__title">Actualizar Cita</h2>
+   <p class="form__paragraph">Por favor diligenciar el formulario que está acontinuación</p>
+   
+   <div class="form__container">
+    <div class="form__group">
+        <input  type="text" id="id" name="id" placeholder=" " class="form-control"formControlName="id">
+        <label class="form__label">id:</label>
+        <span class="form__line"></span>
+    </div>
+     <div class="form__group">
+       <input  type="text" id="placa" name="placa" placeholder=" " class="form-control" formControlName="placa">
+       <label class="form__label">Placa:</label>
+       <span class="form__line"></span>
+     </div>
+     <div class="form__group">
+       <input type="text" id="fecha" name="fecha" placeholder=" " class="form-control" formControlName="fecha">
+       <label class="form__label">Fecha:</label>
+       <span class="form__line"></span>
+     </div>
+     <div class="form__group">
+       <input  type="text" id="hora" name="hora" placeholder=" " class="form-control" formControlName="hora">
+       <label class="form__label">Hora:</label>
+       <span class="form__line"></span>
+     </div>
+     <button class="button" type="submit" [disabled]="!citaForm.valid">Actualizar</button>
+     <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
+        <ng-template #content>
+          <p class="form__paragraph">Se actualizó correctamente la cita:</p>
+            <table class="tabla">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Placa</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+                <td> {{cita["id"] }}</td>
+                <td> {{cita["placa"]}} </td>
+                <td> {{cita["fecha"]}} </td>
+                <td> {{cita["hora"]}}</td>
+                <td> ${{cita["valor"]}} </td>
+
+          </tbody>
+        </table>
+        </ng-template>
+        <ng-template #other_content>
+          <p class="form__paragraph">{{mensaje}}</p>
+        </ng-template>
+   </div>
+ </form>
+</body>

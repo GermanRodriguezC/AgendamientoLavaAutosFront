@@ -19,7 +19,6 @@ export class ListarCitaComponent implements OnInit {
   show: boolean;
   mensaje: string;
 
-
   constructor(protected citaService: CitaService, public datepipe: DatePipe) { }
 
   ngOnInit() {
@@ -33,19 +32,21 @@ export class ListarCitaComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    this.listaCitas = this.citaService.consultar(this.datepipe.transform(form.value.fecha, "dd/MM/yyyy"));
+    this.listaCitas = this.citaService.consultar(this.datepipe.transform(form.value.fecha, 'dd/MM/yyyy'));
     this.listaCitas.subscribe(
       (response) => {
-        if (response.length > 0)
+        if (response.length > 0) {
           this.show = true;
-        else {
+        } else {
           this.show = false;
-          this.mensaje = "No se encontró ninguna cita para esa fecha."
+          this.mensaje = 'No se encontró ninguna cita para esa fecha.';
         }
       },
-      err => { this.mensaje = err["error"].mensaje, this.show = false }
+      err => { 
+        this.mensaje = err['error'].mensaje; 
+        this.show = false;
+      }
     );
-  };
-
+  }
 
 }

@@ -56,6 +56,16 @@ describe('ListarCitaComponent', () => {
     
   });
 
+  it('Consultando listado de citas vacío', () => {
+    spyOn(citaService, 'consultar').and.returnValue(of(new Array<Cita>()));
+    expect(component.citaForm.valid).toBeFalsy();
+    component.citaForm.controls.fecha.setValue('02/02/2022');
+    expect(component.citaForm.valid).toBeTrue();
+
+    component.onSubmit(component.citaForm);
+    expect(component.show).toBeFalsy();
+  });
+
   it('Generando un error en Consulta de citas', () => {
     expect(component.citaForm.valid).toBeFalsy();
     component.citaForm.controls.fecha.setValue('');

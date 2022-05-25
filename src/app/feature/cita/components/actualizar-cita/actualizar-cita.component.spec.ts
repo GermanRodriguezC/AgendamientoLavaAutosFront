@@ -38,10 +38,6 @@ describe('ActualizarCitaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('formulario es invalido cuando esta vacio', () => {
-    expect(component.citaForm.valid).toBeFalsy();
-  });
-
   it('Actualizando cita', () => {
     spyOn(citaService, 'actualizar').and.returnValue(of(true));
     expect(component.citaForm.valid).toBeFalsy();

@@ -46,9 +46,7 @@ describe('ActualizarCitaComponent', () => {
     component.citaForm.controls.placa.setValue('BVB595');
     component.citaForm.controls.fecha.setValue('02/02/2022');
     expect(component.citaForm.valid).toBeTruthy();
-
     component.onSubmit();
-    
   });
 
   it('Generando un error en Actualización de cita', () => {

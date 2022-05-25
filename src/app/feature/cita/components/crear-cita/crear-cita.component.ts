@@ -37,12 +37,12 @@ export class CrearCitaComponent implements OnInit {
   onSubmit() {
     this.citaService.guardar(this.citaForm.value).subscribe(
       response => {
-        this.id = response['valor'];
+        this.id = response[`valor`];
         this.mensaje = 'La cita se creó satisfactoriamente con el Id:  ' + this.id;
         this.show = true;
       },
       err => {
-        this.mensaje = err['error'].mensaje;
+        this.mensaje = err[`error`].mensaje;
         this.show = true;
       }
     );

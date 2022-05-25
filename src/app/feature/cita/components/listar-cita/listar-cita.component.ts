@@ -35,16 +35,15 @@ export class ListarCitaComponent implements OnInit {
     this.listaCitas = this.citaService.consultar(this.datepipe.transform(form.value.fecha, 'dd/MM/yyyy'));
     this.listaCitas.subscribe(
       (response) => {
-        if (response.length > 0) {
-          this.show = true;
-        } else {
-          this.show = false;
-          this.mensaje = 'No se encontró ninguna cita para esa fecha.';
-        }
-      },
-      err => { 
-        this.mensaje = err['error'].mensaje; 
-        this.show = false;
+          if (response.length > 0) {
+            this.show = true;
+          } else {
+            this.show = false;
+            this.mensaje = 'No se encontró ninguna cita para esa fecha.';
+          }
+        },
+        err => {this.mensaje = err[`error`].mensaje;
+                this.show = false;
       }
     );
   }

@@ -16,7 +16,7 @@ describe('BorrarCitaComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BorrarCitaComponent ],
+      declarations: [BorrarCitaComponent],
       imports: [
         CommonModule,
         HttpClientModule,
@@ -24,7 +24,7 @@ describe('BorrarCitaComponent', () => {
       ],
       providers: [HttpService, CitaService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -55,8 +55,7 @@ describe('BorrarCitaComponent', () => {
     expect(component.citaForm.valid).toBeFalsy();
     component.citaForm.controls.id.setValue('');
     expect(component.citaForm.valid).toBeFalsy();
-
-    spyOn(citaService,'eliminar').and.returnValue(throwError('error'));
+    spyOn(citaService, 'eliminar').and.returnValue(throwError('error'));
     component.onSubmit(component.citaForm);
     expect(component.show).toBeFalsy();
   });

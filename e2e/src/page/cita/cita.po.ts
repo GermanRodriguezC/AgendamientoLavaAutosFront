@@ -20,7 +20,7 @@ export class CitaPage {
 
     async clickBotonListarCitas() {
         await this.listarCita.click();
-    } 
+    }
 
     async ingresarId(idCita: string) {
         await this.inputIdCita.sendKeys(idCita);

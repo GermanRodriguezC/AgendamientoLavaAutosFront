@@ -24,18 +24,16 @@ export class BorrarCitaComponent implements OnInit {
       id: new FormControl('', [Validators.required, Validators.pattern('\\d*')])
     });
   }
-  
   onSubmit(form: FormGroup) {
     this.citaService.eliminar(form.value.id).subscribe(
       response => {
         this.show = true;
-        this.id = response['valor'];
+        this.id = response[`valor`];
         this.mensaje = 'Se eliminó satisfactoriamente la cita con el id: ' + this.id;
       },
-      err => { 
-        this.mensaje = err['error'].mensaje;
-        this.show = false;
-     }
+      err => {this.mensaje = err[`error`].mensaje;
+              this.show = false;
+      }
     );
   }
 

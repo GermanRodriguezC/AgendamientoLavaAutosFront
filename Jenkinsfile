@@ -50,6 +50,13 @@ pipeline {
         }
     }
 
+    stage('NPM run Lint') {
+      steps{
+      echo "------------>NPM run Lint<------------"
+      sh 'npm run lint'
+        }
+    }
+
     stage('Test end-to-end') {
       steps{
         echo "------------>Testing Protractor<------------"

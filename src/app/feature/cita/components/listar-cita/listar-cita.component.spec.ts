@@ -39,7 +39,7 @@ describe('ListarCitaComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    expect(datepipe.transform('2022-02-02','dd/MM/yyyy')).toBe('02/02/2022');
+    expect(datepipe.transform('2022-02-02', 'dd/MM/yyyy')).toBe('02/02/2022');
   });
 
   it('formulario es invalido cuando esta vacio', () => {
@@ -53,7 +53,6 @@ describe('ListarCitaComponent', () => {
     expect(component.citaForm.valid).toBeTrue();
 
     component.onSubmit(component.citaForm);
-    
   });
 
   it('Consultando listado de citas vacío', () => {

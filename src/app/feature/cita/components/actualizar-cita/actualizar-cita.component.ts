@@ -14,14 +14,11 @@ const FORMATO = '^[A-Z0-9]{5,6}$';
 })
 export class ActualizarCitaComponent implements OnInit {
   citaForm: FormGroup;
-  cita: Object;
+  cita: object;
   mensaje: string;
   show: boolean;
   constructor(public citaService: CitaService) { }
-
-  ngOnInit() {
-    this.construirFormularioCita();
-  }
+  ngOnInit() { this.construirFormularioCita(); }
 
   private construirFormularioCita() {
     this.citaForm = new FormGroup({
@@ -40,7 +37,7 @@ export class ActualizarCitaComponent implements OnInit {
           this.show = true;
         },
         err => {
-          this.mensaje = err['error'].mensaje;
+          this.mensaje = err[`error`].mensaje;
           this.show = false;
         }
       );

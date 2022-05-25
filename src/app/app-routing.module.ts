@@ -8,7 +8,6 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: CrearCitaComponent, canActivate: [SecurityGuard]  },
   { path: 'cita', loadChildren: () => import('@cita/cita.module').then(mod => mod.CitaModule) }
-  
 ];
 
 @NgModule({

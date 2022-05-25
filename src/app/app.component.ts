@@ -14,8 +14,6 @@ export class AppComponent {
     { url: '/cita/borrar', nombre: 'Borrar cita' },
     { url: '/cita/listar', nombre: 'Listar cita' },
     { url: '/cita/actualizar', nombre: 'Actualizar cita' },
-    
   ];
 
-  
 }

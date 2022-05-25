@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 export interface Options {
@@ -7,13 +7,10 @@ export interface Options {
   params?: HttpParams;
 }
 @Injectable()
-export class HttpService implements OnInit {
+export class HttpService {
   postId: string;
 
   constructor(protected http: HttpClient) { }
-
-  ngOnInit() {
-  }
 
   public createDefaultOptions(): Options {
     return {
@@ -56,21 +53,17 @@ export class HttpService implements OnInit {
 
   public doPost<T>(serviceUrl: string, body: T, opts?: Options) {
     const ropts = this.createOptions(opts);
-
     return this.http.post(serviceUrl, body, ropts);
   }
-  
+
   public doPut<T>(serviceUrl: string, body: T, opts?: Options) {
     const ropts = this.createOptions(opts);
-
     return this.http.put(serviceUrl, body, ropts);
   }
 
   public doDelete<R>(serviceUrl: string, opts?: Options){
     const ropts = this.createOptions(opts);
-  
-      return this.http.delete<R>(serviceUrl, ropts)
-
+    return this.http.delete<R>(serviceUrl, ropts);
   }
 
   public doGetParameters<T>(serviceUrl: string, parametros: HttpParams, opts?: Options): Observable<T> {

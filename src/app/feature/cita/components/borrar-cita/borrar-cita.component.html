@@ -8,11 +8,11 @@
         <span class="form__line"></span>
         <input validar type="text" id="id" name="id" placeholder=" " class="form-control" formControlName="id">
     </div>
-     <button class="button" type="submit" [disabled]="!citaForm.valid">Borrar</button>
+     <button class="button" id="button" type="submit" [disabled]="!citaForm.valid">Borrar</button>
    </div>
    <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
         <ng-template #content>
-          <p class="form__paragraph">{{mensaje}}</p>
+          <h1 class="form__paragraph">{{mensaje}}</h1>
         </ng-template>
         <ng-template #other_content>
           <p class="form__paragraph">{{mensaje}}</p>

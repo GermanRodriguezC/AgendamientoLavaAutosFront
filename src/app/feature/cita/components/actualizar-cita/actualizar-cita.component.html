@@ -24,7 +24,7 @@
        <label class="form__label">Hora:</label>
        <span class="form__line"></span>
      </div>
-     <button class="button" type="submit" [disabled]="!citaForm.valid">Actualizar</button>
+     <button id="button"   class="button" type="submit" [disabled]="!citaForm.valid">Actualizar</button>
      <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
         <ng-template #content>
           <p class="form__paragraph">Se actualizó correctamente la cita!
@@ -41,10 +41,10 @@
             </tr>
           </thead>
           <tbody>
-                <td> {{cita["id"] }}</td>
-                <td> {{cita["placa"]}} </td>
-                <td> {{cita["fecha"]}} </td>
-                <td> {{cita["hora"]}}</td>
+                <td id="idActualizado"> {{cita["id"] }}</td>
+                <td id="placaActualizada"> {{cita["placa"]}} </td>
+                <td id="fechaActualizada"> {{cita["fecha"]}} </td>
+                <td id="horaActualizada"> {{cita["hora"]}}</td>
                 <td> ${{cita["valor"]}} </td>
 
           </tbody>

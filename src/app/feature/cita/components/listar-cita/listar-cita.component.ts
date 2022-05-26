@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { CitaService } from '@cita/shared/service/cita.service';
 import { Cita } from '@cita/shared/model/cita';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

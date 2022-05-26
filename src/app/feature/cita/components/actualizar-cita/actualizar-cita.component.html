@@ -5,26 +5,26 @@
    
    <div class="form__container">
     <div class="form__group">
-        <input  type="text" id="id" name="id" placeholder=" " class="form-control"formControlName="id">
-        <label class="form__label">id:</label>
+        <input validar type="text" id="id" name="id" placeholder="id: Ej. 1" class="form-control"formControlName="id">
+        <label class="form__label"></label>
         <span class="form__line"></span>
     </div>
      <div class="form__group">
-       <input validar type="text" id="placa" name="placa" placeholder=" " class="form-control" formControlName="placa">
-       <label class="form__label">Placa:</label>
+       <input validar type="text" id="placa" name="placa" placeholder="Placa: Ej. ABC123" class="form-control" formControlName="placa">
+       <label class="form__label"></label>
        <span class="form__line"></span>
      </div>
      <div class="form__group">
-       <input type="text" id="fecha" name="fecha" placeholder=" " class="form-control" formControlName="fecha">
-       <label class="form__label">Fecha:</label>
+       <input validar type="text" id="fecha" name="fecha" placeholder="Fecha: Ej. 01/01/2022" class="form-control" formControlName="fecha">
+       <label class="form__label"></label>
        <span class="form__line"></span>
      </div>
      <div class="form__group">
-       <input  type="text" id="hora" name="hora" placeholder=" " class="form-control" formControlName="hora">
-       <label class="form__label">Hora:</label>
+       <input  validar type="text" id="hora" name="hora" placeholder="Hora: Ej. 12:00" class="form-control" formControlName="hora">
+       <label class="form__label"></label>
        <span class="form__line"></span>
      </div>
-     <button id="button"   class="button" type="submit" [disabled]="!citaForm.valid">Actualizar</button>
+     <button id="button"   class="button" type="submit" [disabled]="!citaForm.valid" >Actualizar</button>
      <div *ngIf="show; then content else other_content" class="alert alert-danger animated fadeIn"></div>
         <ng-template #content>
           <p class="form__paragraph">Se actualizó correctamente la cita!
